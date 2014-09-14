@@ -1,0 +1,49 @@
+<html>
+<head>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/prototype/1.7.2/prototype.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/scriptaculous.js"></script>
+
+<script>
+	Event.observe(window, 'load', function() {
+		Array.prototype.shuffle = function() {
+		  return this.sortBy(Math.random);
+		};
+
+		(function() {
+			function positionElement(e, i) {
+				e.morph('top:' + i*e.getHeight() + 'px', { duration: 0.4 }); 
+			}			
+			$('scripty_morph_demo').observe('click', function () {
+				$('scripty_morph_demo').select('div').shuffle().each(positionElement);
+			});
+			// init:
+			$('scripty_morph_demo').select('div').each(positionElement);
+		})();
+	});
+</script>
+
+<style>
+	#scripty_morph_demo {
+		cursor: pointer;
+		position: relative;
+		height: 300px;
+	}
+	#scripty_morph_demo div {
+		position: absolute;
+		font-size: 30px;
+		height: px;
+	}
+</style>
+
+</head>
+
+<body>
+	<div id="scripty_morph_demo">
+	    <div>Я к вам пишу - чего же боле?</div>
+	    <div>Что я могу еще сказать?</div>
+	    <div>Теперь, я знаю, в вашей воле</div>
+	    <div>Меня презреньем наказать.</div>
+	</div>
+</body>
+
+</html>
